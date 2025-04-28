@@ -17,8 +17,7 @@ class myWidget extends baseWidget(EventEmitter) {
     this.toggleVisibility = 0
     this.label = this.getLabel()
     this.widget = this.getWidget()
-
-    this.inputValue = []
+    this.inputValue = '' 
   }
 
   getLabel () {
@@ -60,16 +59,14 @@ class myWidget extends baseWidget(EventEmitter) {
     this.widget.on('keypress', (ch, key) => {
       if (key.name === 'escape' || key.name === 'return' || key.name === 'enter') {
         this.toggleVisibility = !this.toggleVisibility
-        this.widget.clearValue()
-        this.inputValue = []
+        this.inputValue = ''
+        this.widget.setValue('')
         this.widget.destroy()
         this.emit('exitSearch')
         this.screen.remove(this.widget)
         this.screen.render()
       } else {
-        const searchText = this.captureText(key)
-        this.widget.setValue(searchText)
-        this.emit('keypress', searchText)
+        this.emit('keypress', this.widget.value)
         this.screen.render()
       }
     })
@@ -80,6 +77,8 @@ class myWidget extends baseWidget(EventEmitter) {
         this.toggleVisibility = !this.toggleVisibility
         if (this.toggleVisibility) {
           this.screen.append(this.widget)
+          this.widget.setValue('')
+          this.inputValue = ''
           this.screen.render()
           this.widget.focus()
         } else {
@@ -88,7 +87,6 @@ class myWidget extends baseWidget(EventEmitter) {
       }
     })
 
-    // by default, remove this widget from the screen
     this.screen.remove(this.widget)
   }
   getWidget () {
@@ -98,8 +96,11 @@ class myWidget extends baseWidget(EventEmitter) {
       style: this.getWidgetStyle(),
       align: 'left',
       inputOnFocus: true,
-      vi: true,
-      value: ''
+      input: true,
+      keys: true,
+      vi: false,  
+      value: '',
+      keyable: true  
     })
   }
 }
