@@ -1,16 +1,22 @@
 const CONTAINERS_GRID_LAYOUT = {
+  // Left Section Layout
+  'containerList': [0, 0, 6, 6],            // Main container list (7 rows height)
+  'actionStatus': [6, 0, 2, 4],             // Bottom left status
+  'containerStatus': [6, 4, 2, 2],          // Bottom right status
+  'containerUtilization': [8, 0, 2, 3],          // Bottom left utilization
+  'containerVsImages': [8, 3, 2, 3],        // Bottom right comparison
+
+  // Right Section
+  'containerLogs': [0, 6, 10, 6],           // Container logs (full height)
+
+  // Footer Section
+  'searchInput': [10, 0, 1, 12],          // Search input at bottom
+  'toolbar': [11, 0, 1, 12],         
+
+  // Popups/Modals (keep these unchanged)
   'actionsMenu': [4, 4, 4, 4],
   'help': [4, 4, 4, 4],
-  'containerInfo': [2, 2, 8, 8],
-  'containerSortList': [4, 5, 3, 2],
-  'containerList': [0, 0, 6, 10],
-  'actionStatus': [6, 0, 1.5, 10],
-  'containerStatus': [0, 10, 2, 2],
-  'containerUtilization': [2, 10, 3, 2],
-  'containerVsImages': [5, 10, 2, 2],
-  'containerLogs': [7.5, 0, 4, 12],
-  'toolbar': [11.5, 0, 1, 12],
-  'searchInput': [11, 0, 1, 12]
+  'containerInfo': [2, 2, 8, 8]
 }
 
 const SERVICES_GRID_LAYOUT = {
